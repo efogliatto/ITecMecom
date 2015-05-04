@@ -1,0 +1,345 @@
+% GIA_Mecom_TechRep.cls
+%
+% Clase para generaci\'on de Informes t\'ecnicos de mMecom
+%
+% Marzo 2015  Ezequiel Fogliatto fogliatto (at) cab.cnea.gov.ar
+%
+%
+%
+%
+% --- Estructura de la clase: secci\'on de identificaci\'on
+% ---
+\ProvidesClass{GIA_Mecom_TechRep}[2015/03/05 Informes Tecnicos de Mecom]
+\NeedsTeXFormat{LaTeX2e}
+
+
+% --- Estructura de la clase: declaraci\'on de opciones
+% ---
+% Esta clase extiende la clase article
+% Lee todas las opciones de documentclass, y las pasa a article
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+
+
+% --- Estructura de la clase: ejecuci\'on de opciones
+% ---
+\ProcessOptions\relax
+
+% Carga de clase base
+\LoadClass{article}
+
+
+
+
+% Carga de oaquetes adicionales
+\RequirePackage[T1]{fontenc}          % Usar T1 enconding
+\RequirePackage{fancyhdr}             % Encabezados y pies de p\'agina
+\RequirePackage{cals}                 % Generaci\'on de tablas con tama\~nos absolutos
+\RequirePackage{lastpage}             % Determina la cantidad total de p\'aginas
+\RequirePackage{graphicx}             % Manejo de gr\'aficos
+\RequirePackage{setspace}             % Interlineado en partes espec\'ificas
+\RequirePackage{indentfirst}          % Genera sangr\'ia para el primer p\'arrafo despu\'es del t\'itulo de secci\'on
+\RequirePackage{amsmath,amsfonts}     % S\'imbolos matem\'aticos
+\RequirePackage{fixltx2e}             % Multicolumn
+\RequirePackage{placeins}             % Fuerza el salto de p\'agina despu\'es de figuras con \FloatBarrier
+\RequirePackage{nomencl}              % Tabla de abreviaturas
+\RequirePackage[format=hang]{caption} % Formato de captions
+\RequirePackage{xpatch}               % Espacio en tabla de abreviaturas
+\RequirePackage{multirow}             % Unir filas en tablas
+\RequirePackage{booktabs}             % Formato de tablas
+%\RequirePackage[spanish]{babel}       % Acentos, silabeo, etc
+
+
+
+
+% Margenes
+\setlength{\textwidth}{17cm}
+\setlength{\voffset}{-1.8cm}
+\setlength{\topmargin}{0.1cm}
+\setlength{\headheight}{2cm}%alegonza
+\setlength{\textheight}{24cm}
+\setlength{\hoffset}{-1in}
+\setlength{\oddsidemargin}{2.4cm}
+\setlength{\evensidemargin}{1.6cm}
+\setlength{\headsep}{10pt}
+
+
+% Sangria e interlineado
+\setlength{\parindent}{0.75cm}          % Sangria
+\renewcommand{\baselinestretch}{1.1}   % Factor de espacio entre lineas
+\setlength{\parskip}{2mm}               % Espacio extra entre p\'arrafos
+%%\setlength{\textfloatsep}{12pt}
+%%\setlength{\abovedisplayskip}{6pt}
+%%\setlength{\belowdisplayskip}{6pt}
+%%\setlength{\abovecaptionskip}{6pt}
+%%\setlength{\belowcaptionskip}{6pt}
+
+
+% Uso de Helvetica (parecida a Arial) como fuente
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\sfdefault}{phv}
+
+
+% Definicion de las macros objetivo, alcance, revisores, etc
+\newcommand*{\numeroIT}[1]{\gdef\@numeroIT{#1}}
+\newcommand*{\objetivo}[1]{\gdef\@objetivo{#1}}
+\newcommand*{\alcance}[1]{\gdef\@alcance{#1}}
+\newcommand*{\autores}[2]{{\gdef\@fautor{#1}} {\gdef\@sautor{#2}}}
+\newcommand*{\revisores}[3]{{\gdef\@frev{#1}} {\gdef\@srev{#2}} {\gdef\@trev{#3}}}
+\newcommand*{\calidad}[1]{\gdef\@calidad{#1}}
+\newcommand*{\aprobacion}[1]{\gdef\@aprobacion{#1}}
+\newcommand*{\titulo}[1]{\gdef\@titulo{#1}}
+
+% Captions
+\captionsetup{width=0.85\textwidth,textfont=footnotesize,labelfont={bf,small},format=hang}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         Abreviaturas                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makenomenclature
+
+% Quita el nombre de la seccion abreviaturas
+\renewcommand{\nomname}{\vspace{-1.5cm}}
+
+% Coloca las abreviaturas en negrita
+%\renewcommand{\nomlabel}[1]{\bf #1}
+
+% Inserta espacio antes de cada item
+\patchcmd{\thenomenclature}
+  {\leftmargin\labelwidth}
+  {\leftmargin\labelwidth\itemindent 0.75cm }
+  {}{}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Caratula                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\portada}{
+
+    \newpage 
+    \vspace*{-0.9in}    
+
+    \def\cals@framecs@width{2pt}
+    \def\cals@framers@width{2pt}
+    \def\cals@rs@width{2pt}
+    \def\cals@cs@width{2pt}
+
+    \begin{calstable}
+        \colwidths{{3.15cm}{10.51cm}{3.7cm}}
+        \brow 
+            \alignC \nullcell{ltr} \alignC 
+            \cell{{\vfil \large \bf GERENCIA DE INVESTICACI\'ON APLICADA} \\[4pt] DEPARTAMENTO DE MEC\'ANICA COMPUTACIONAL}
+            \cell{\vfil IN-ATN40MC-\@numeroIT}  
+            \ht\cals@current@row=3.15cm 
+        \erow
+        \brow 
+            \nullcell{lrb}\spancontent{\vfil \includegraphics[width=0.9\linewidth]{Logo_CNEA}} 
+            \cell{\vfil \large \bf Informe T\'ecnico}\cell{\vfil P\'agina: \thepage \hspace{1pt} de \pageref{LastPage}} 
+            \ht\cals@current@row=0.85cm
+        \erow
+    \end{calstable}     
+    
+    \begin{calstable}
+        \colwidths{{2.25cm}{15.11cm}}
+        \brow 
+            \alignC \cell{\vfil \large \bf T\'ITULO:} \def\cals@borderL{0pt} \cell{\vfil \bf \@titulo}  
+            \ht\cals@current@row=1.35cm 
+        \erow
+    \end{calstable}  
+    
+    \begin{calstable}
+        \colwidths{{17.36cm}}
+        \brow 
+            \cell{
+                \vspace{10pt}            
+                {\large \bf Objetivo:} \par
+                {\parindent=0.75cm \@objetivo} \\ 
+                 
+                {\large \bf Alcance:} \par
+                {\parindent=0.75cm \@alcance}
+             } 
+            \ht\cals@current@row=14.5cm 
+        \erow
+    \end{calstable}            
+
+    \begin{calstable}
+        \colwidths{{2.48cm}}
+        \brow 
+            \alignC \nullcell{ltb} \nullcell{rtb}\spancontent{\vfil \bf Prepar\'o } 
+            \nullcell{ltb} \nullcell{tb} \nullcell{rtb} \spancontent{\vfil \bf Revis\'o } 
+            \cell{\vfil \bf \begin{spacing}{1}Intervino calidad\end{spacing}} 
+            \cell{\vfil \bf Aprob\'o} 
+            \ht\cals@current@row=1.15cm 
+        \erow
+    \end{calstable} 
+    
+    \begin{calstable}
+        \colwidths{{2.48cm}}
+        \brow 
+            \alignC \cell{\vfill \@fautor}\cell{\vfill \@sautor}             % Autores
+            \cell{\vfill \@frev} \cell{\vfill \@srev} \cell{\vfill \@trev}   % Revisores
+            \cell{\vfill \@calidad}                                          % Calidad
+            \cell{\vfill \@aprobacion}                                       % Aprobacion
+            \ht\cals@current@row=2.9cm 
+        \erow
+    \end{calstable} 
+    
+    \begin{calstable}
+        \colwidths{{1.15cm}{16.21cm}}
+        \brow 
+            \cell{\small \bf \vspace{1pt} NOTA:} \def\cals@borderL{0pt} 
+            \cell{ \begin{spacing}{1.1} \small Este documento es propiedad de CNEA y se reserva todos los derechos legales sobre \'el. No est\'a permitida la explotaci\'on, transferencia o liberaci\'on de ninguna informaci\'on en el contenido, ni hacer reproducciones y entregarlas a terceros sin un acuerdo previo y escrito de CNEA.\end{spacing}} 
+            \ht\cals@current@row=1.6cm 
+        \erow
+    \end{calstable}     
+    
+  } 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                Cabeceras                                    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Primera p\'agina
+\fancypagestyle{firstpage}{%
+    \fancyhf{}                            % Borra todos los campos
+    \renewcommand{\headrulewidth}{0pt}    % Elimina la l\'inea del encabezado
+    \renewcommand{\footrulewidth}{0pt}    % Elimina la l\'inea del pie de p\'agina
+}
+
+% Resto de las p\'aginas
+\fancypagestyle{followingpage}{
+    \fancyhf{}                            % Borra todos los campos
+    \renewcommand{\headrulewidth}{0pt}    % Elimina la l\'inea del encabezado
+    \renewcommand{\footrulewidth}{0pt}    % Elimina la l\'inea del pie de p\'agina
+    \fancyhead[CO,CE]{
+        \begin{calstable}
+            \def\cals@framecs@width{1.5pt}
+            \def\cals@framers@width{1.5pt}
+            \def\cals@rs@width{1.5pt}
+            \def\cals@cs@width{1.5pt}    
+            \colwidths{{2.8cm}{10.14cm}{4.06cm}}
+            \brow 
+                \alignC \cell{\vfil \huge \bf CNEA} 
+                \cell{\vfil \bf \@titulo}              
+                \cell{\vfil IN-ATN40MC-\@numeroIT \\[4pt] P\'agina: \thepage \hspace{1pt} de \pageref{LastPage} }
+                \ht\cals@current@row=1.7cm 
+            \erow
+        \end{calstable}
+        }
+}
+
+\pagestyle{followingpage}
+\AtBeginDocument{\thispagestyle{firstpage}}
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Titulos de secciones y subsecciones                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Agrega al punto despues del numero de (sub/subsub)seccion
+\renewcommand{\thesection}   {\textup{\arabic{section}.}}
+\renewcommand{\thesubsection}   {\textup{\thesection\arabic{subsection}.}}
+\renewcommand{\thesubsubsection}{\textup{%
+    \thesubsection \arabic{subsubsection}.}}
+
+% Formato del titulo de la (sub/subsub)seccion
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                     {-12pt}%
+                                     {11pt}%                Espacio despues del t\'itulo
+                                     {\bfseries\Large}}%
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                     {-12pt}%
+                                     {11pt}%
+                                     {\bfseries\large}}%
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                     {-12pt}%
+                                     {11pt}%
+                                     {\bfseries\normalsize}}%                                     
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           Tabla de contenidos                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Cambio del nombre
+\renewcommand{\contentsname}{\'INDICE}
+
+% Centrado del nombre, comienza nueva p\'agina al final
+\makeatletter       
+\renewcommand\tableofcontents{%
+    \if@twocolumn
+      \@restonecoltrue\onecolumn
+    \else
+      \@restonecolfalse
+    \fi
+            \newpage
+            \begin{center}      %%%   
+            \Large              %%%   
+            \bfseries           %%%   
+            \contentsname       %%%  
+            \end{center}        %%%
+%            \addvspace{1cm}     %%%   Añade o quita espacio vertical 
+    \@mkboth{%
+       \MakeUppercase\contentsname}{\MakeUppercase\contentsname} 
+    {\large \@starttoc{toc} }
+    \if@restonecol\twocolumn\fi
+    \newpage
+    }
+\makeatother
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                      Figuras, tablas y referencias                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\refname}{\vspace{-1.5cm}}
+
+% pdf links
+%\ifnum \mecomuselinks = 1
+% Use color links
+\RequirePackage{color}
+\definecolor{url}{rgb}{0.8,0.,0.}
+\RequirePackage[colorlinks,linkcolor=black,%
+                urlcolor=url,citecolor=black,%
+                plainpages=false,pdfpagelabels]{hyperref}
+\RequirePackage{nameref,url}
+\def\UrlFont{\mdseries}
+%\fi
+
+% Separaci\'on entre filas y columnas
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{5mm}
+
+% Espesor de l\'ineas (del paquete booktabs)
+\setlength{\heavyrulewidth}{1.5pt}
+
+
+   
+
+\endinput

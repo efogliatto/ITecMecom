@@ -1,0 +1,114 @@
+\documentclass[a4paper,11pt,twoside]{MECOM}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%               Parametros principales del documento                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Titulo
+\titulo{Implementaci\'on de la clase MECOM para generaci\'on de informes t\'ecnicos en \LaTeX{}}
+
+% Autores
+\autores{E. O. Fogliatto}{}
+
+% Revisores
+\revisores{}{}{}
+
+% Revision de calidad
+\calidad{A. Gonz\'alez}
+
+% Aprobacion
+\aprobacion{E. Dari}
+
+%Objetivo
+\objetivo{El presente documento tiene como objetivo mostrar el uso de la clase MECOM.cls para gererar informes t\'ecnicos.}
+
+% Alcance
+\alcance{Su utilizaci\'on est\'a restringida al Departamento de Mec\'anica Computacional. GOOD SAVE \LaTeX{}!}
+
+% Numero de informe tecnico
+\numeroIT{01/15}
+
+
+
+\begin{document}
+
+    % Creacion de la caratula
+    \portada
+    
+    % Creacion del indice
+    \tableofcontents    
+    
+    % Comienzo del desarrollo del documento
+    \section{Definiciones}
+    \subsection{Abreviaturas}
+        \printnomenclature[2cm]
+        
+    \section{Uso de MECOM.cls}
+    La clase {\bf MECOM.cls} est\'a basada en {\bf article} \cite{hefferon_minutes_2005}, y est\'a pensada para escribir informes t\'ecnicos de Mecom.\nomenclature{Mecom}{Mec\'anica Computacional}. Se recomienda consultar el archivo ITec\textunderscore Mecom.tex para ver la implementaci\'on de secciones como portada, \'indice, abreviaturas, referencias, etc.
+    
+    \subsection{Portada}
+        El comando {\bf \textbackslash portada} genera la portada en una p\'agina nueva. Para completarla es necesario llenar los siguientes campos.
+        \begin{itemize}
+            \item titulo
+            \item autores
+            \item revisores
+            \item calidad
+            \item aprobacion
+            \item objetivo
+            \item alcance
+            \item numeroIT (s\'olo la parte final, es decir n\'umero/a\~no)
+        \end{itemize}
+        \par
+        Es necesario conservar el logo de CNEA\nomenclature{CNEA}{Comisi\'on Nacional de Energ\'ia At\'omica} para poder compilar el documento. Junto con este documento se adjunta un archivo \emph{Makefile} para facilitar la compilaci\'on completa (\'indices, abreviaturas, y referencias).
+        \par
+        En esta primera versi\'on {\bf NO SE RECOMIENDA CAMBIAR EL TAMA\~NO DE LETRA}, ya que las distintas partes de la portada est\'an ajustadas para Arial 11pt.
+        
+    \subsection{\'Indice}
+        Se redefini\'o la estructura de {\bf \textbackslash tableofcontents} para colocar el \'indice en una p\'agina nueva, con la palabra {\bf \'INDICE} centrada y los t\'itulos de secciones y subsecciones en tama\~no \textbackslash large.
+        
+        
+    \subsection{Abreviaturas}
+        Uso del paquete {\bf nomencl}. Los s\'imbolos est\'an alineados y tienen sangr\'ia.
+        
+    \subsection{Im\'agenes y tablas}
+    Se hace uso del paquete {\bf caption} para dar formato a los ep\'igrafes, y las referencias generan links por defecto en el pdf. Por ejemplo, ver como queda la Fig.~\ref{fg:Logo_CNEA}
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=0.5\textwidth]{Logo_CNEA}
+        \caption{Ejemplo de uso de figuras}
+        \label{fg:Logo_CNEA}
+    \end{figure}    
+    
+    \par
+    Para usar las tablas se definieron os anchos de l\'inea con el paquete {booktabs}, y pueden quedar como la Tabla.~\ref{tab:prueba}
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{c c}
+            \toprule
+            \bf Procesador & \bf Caracter\'istica \\
+            \midrule
+            \LaTeX{} & Excelente \\
+            OpenOffice & Porquer\'ia\\
+            \bottomrule
+        \end{tabular}
+        \caption{Ejemplo de uso de tablas}
+        \label{tab:prueba}
+    \end{table}    
+    
+    
+    \subsection{Referencias}
+    Para generar este documento se us\'o el estilo {\bf asmems4} con Bibtex.
+    
+    \subsection{Formato general}
+    El resto de las caracter\'isticas generales del documento, como sangr\'ia, interlineado, formato de t\'itulo de secciones, encabezados, etc., se encuentran definidas dentro de la clase. La misma est\'a comentada, de forma que puede cambiarse f\'acilmente si se desea.
+    
+    
+    \section{Conclusiones}
+    Ya no hay excusas para documentar el trabajo usando informes t\'ecnicos.
+    
+    
+    \section{Bibliograf\'ia y referencias}
+    \bibliographystyle{asmems4}
+    \bibliography{MiBiblioteca}
+
+\end{document}
