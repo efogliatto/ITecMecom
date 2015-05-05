@@ -1,6 +1,6 @@
 % GIA_Mecom_TechRep.cls
 %
-% Clase para generaci\'on de Informes t\'ecnicos de mMecom
+% Clase para generaci\'on de Informes t\'ecnicos de Mecom
 %
 % Marzo 2015  Ezequiel Fogliatto fogliatto (at) cab.cnea.gov.ar
 %
@@ -30,7 +30,7 @@
 
 
 
-% Carga de oaquetes adicionales
+% Carga de paquetes adicionales
 \RequirePackage[T1]{fontenc}          % Usar T1 enconding
 \RequirePackage{fancyhdr}             % Encabezados y pies de p\'agina
 \RequirePackage{cals}                 % Generaci\'on de tablas con tama\~nos absolutos
@@ -46,21 +46,13 @@
 \RequirePackage{xpatch}               % Espacio en tabla de abreviaturas
 \RequirePackage{multirow}             % Unir filas en tablas
 \RequirePackage{booktabs}             % Formato de tablas
-%\RequirePackage[spanish]{babel}       % Acentos, silabeo, etc
-
+\RequirePackage[a4paper]{geometry}             % Formato de margenes (distinto para la primera pagina)
+\RequirePackage{lipsum}               % Opcional. Solo para insertar texto "dummy"
 
 
 
 % Margenes
-\setlength{\textwidth}{17cm}
-\setlength{\voffset}{-1.8cm}
-\setlength{\topmargin}{0.1cm}
-\setlength{\headheight}{2cm}%alegonza
-\setlength{\textheight}{24cm}
-\setlength{\hoffset}{-1in}
-\setlength{\oddsidemargin}{2.4cm}
-\setlength{\evensidemargin}{1.6cm}
-\setlength{\headsep}{10pt}
+\geometry{inner=2.4cm,width=17cm,height=24cm,head=2cm,headsep=10pt,top=3.36cm}
 
 
 % Sangria e interlineado
@@ -121,83 +113,88 @@
 
 \newcommand{\portada}{
 
-    \newpage 
-    \vspace*{-0.9in}    
+    % Fija el ajuste de la primera pagina. Se pueden cambiar los margenes globales del documento sin afectar la forma de esta pagina
+    \newgeometry{inner=2cm,width=17cm,height=24cm,head=2cm,headsep=10pt,top=3.36cm}
 
-    \def\cals@framecs@width{2pt}
-    \def\cals@framers@width{2pt}
-    \def\cals@rs@width{2pt}
-    \def\cals@cs@width{2pt}
+        \newpage     
+        \vspace*{-0.8in}    
 
-    \begin{calstable}
-        \colwidths{{3.15cm}{10.51cm}{3.7cm}}
-        \brow 
-            \alignC \nullcell{ltr} \alignC 
-            \cell{{\vfil \large \bf GERENCIA DE INVESTICACI\'ON APLICADA} \\[4pt] DEPARTAMENTO DE MEC\'ANICA COMPUTACIONAL}
-            \cell{\vfil IN-ATN40MC-\@numeroIT}  
-            \ht\cals@current@row=3.15cm 
-        \erow
-        \brow 
-            \nullcell{lrb}\spancontent{\vfil \includegraphics[width=0.9\linewidth]{Logo_CNEA}} 
-            \cell{\vfil \large \bf Informe T\'ecnico}\cell{\vfil P\'agina: \thepage \hspace{1pt} de \pageref{LastPage}} 
-            \ht\cals@current@row=0.85cm
-        \erow
-    \end{calstable}     
-    
-    \begin{calstable}
-        \colwidths{{2.25cm}{15.11cm}}
-        \brow 
-            \alignC \cell{\vfil \large \bf T\'ITULO:} \def\cals@borderL{0pt} \cell{\vfil \bf \@titulo}  
-            \ht\cals@current@row=1.35cm 
-        \erow
-    \end{calstable}  
-    
-    \begin{calstable}
-        \colwidths{{17.36cm}}
-        \brow 
-            \cell{
-                \vspace{10pt}            
-                {\large \bf Objetivo:} \par
-                {\parindent=0.75cm \@objetivo} \\ 
-                 
-                {\large \bf Alcance:} \par
-                {\parindent=0.75cm \@alcance}
-             } 
-            \ht\cals@current@row=14.5cm 
-        \erow
-    \end{calstable}            
+        \def\cals@framecs@width{2pt}
+        \def\cals@framers@width{2pt}
+        \def\cals@rs@width{2pt}
+        \def\cals@cs@width{2pt}
 
-    \begin{calstable}
-        \colwidths{{2.48cm}}
-        \brow 
-            \alignC \nullcell{ltb} \nullcell{rtb}\spancontent{\vfil \bf Prepar\'o } 
-            \nullcell{ltb} \nullcell{tb} \nullcell{rtb} \spancontent{\vfil \bf Revis\'o } 
-            \cell{\vfil \bf \begin{spacing}{1}Intervino calidad\end{spacing}} 
-            \cell{\vfil \bf Aprob\'o} 
-            \ht\cals@current@row=1.15cm 
-        \erow
-    \end{calstable} 
-    
-    \begin{calstable}
-        \colwidths{{2.48cm}}
-        \brow 
-            \alignC \cell{\vfill \@fautor}\cell{\vfill \@sautor}             % Autores
-            \cell{\vfill \@frev} \cell{\vfill \@srev} \cell{\vfill \@trev}   % Revisores
-            \cell{\vfill \@calidad}                                          % Calidad
-            \cell{\vfill \@aprobacion}                                       % Aprobacion
-            \ht\cals@current@row=2.9cm 
-        \erow
-    \end{calstable} 
-    
-    \begin{calstable}
-        \colwidths{{1.15cm}{16.21cm}}
-        \brow 
-            \cell{\small \bf \vspace{1pt} NOTA:} \def\cals@borderL{0pt} 
-            \cell{ \begin{spacing}{1.1} \small Este documento es propiedad de CNEA y se reserva todos los derechos legales sobre \'el. No est\'a permitida la explotaci\'on, transferencia o liberaci\'on de ninguna informaci\'on en el contenido, ni hacer reproducciones y entregarlas a terceros sin un acuerdo previo y escrito de CNEA.\end{spacing}} 
-            \ht\cals@current@row=1.6cm 
-        \erow
-    \end{calstable}     
-    
+        \begin{calstable}
+            \colwidths{{3.15cm}{10.51cm}{3.7cm}}
+            \brow 
+                \alignC \nullcell{ltr} \alignC 
+                \cell{{\vfil \large \bf GERENCIA DE INVESTICACI\'ON APLICADA} \\[4pt] DEPARTAMENTO DE MEC\'ANICA COMPUTACIONAL}
+                \cell{\vfil IN-ATN40MC-\@numeroIT}  
+                \ht\cals@current@row=3.15cm 
+            \erow
+            \brow 
+                \nullcell{lrb}\spancontent{\vfil \includegraphics[width=0.9\linewidth]{Logo_CNEA}} 
+                \cell{\vfil \large \bf Informe T\'ecnico}\cell{\vfil P\'agina: \thepage \hspace{1pt} de \pageref{LastPage}} 
+                \ht\cals@current@row=0.85cm
+            \erow
+        \end{calstable}     
+        
+        \begin{calstable}
+            \colwidths{{2.25cm}{15.11cm}}
+            \brow 
+                \alignC \cell{\vfil \large \bf T\'ITULO:} \def\cals@borderL{0pt} \cell{\vfil \bf \@titulo}  
+                \ht\cals@current@row=1.35cm 
+            \erow
+        \end{calstable}  
+        
+        \begin{calstable}
+            \colwidths{{17.36cm}}
+            \brow 
+                \cell{
+                    \vspace{10pt}            
+                    {\large \bf Objetivo:} \par
+                    {\parindent=0.75cm \@objetivo} \\ 
+                     
+                    {\large \bf Alcance:} \par
+                    {\parindent=0.75cm \@alcance}
+                 } 
+                \ht\cals@current@row=14.6cm 
+            \erow
+        \end{calstable}            
+
+        \begin{calstable}
+            \colwidths{{2.48cm}}
+            \brow 
+                \alignC \nullcell{ltb} \nullcell{rtb}\spancontent{\vfil \bf Prepar\'o } 
+                \nullcell{ltb} \nullcell{tb} \nullcell{rtb} \spancontent{\vfil \bf Revis\'o } 
+                \cell{\vfil \bf \begin{spacing}{1}Intervino calidad\end{spacing}} 
+                \cell{\vfil \bf Aprob\'o} 
+                \ht\cals@current@row=1.15cm 
+            \erow
+        \end{calstable} 
+        
+        \begin{calstable}
+            \colwidths{{2.48cm}}
+            \brow 
+                \alignC \cell{\vfill \@fautor}\cell{\vfill \@sautor}             % Autores
+                \cell{\vfill \@frev} \cell{\vfill \@srev} \cell{\vfill \@trev}   % Revisores
+                \cell{\vfill \@calidad}                                          % Calidad
+                \cell{\vfill \@aprobacion}                                       % Aprobacion
+                \ht\cals@current@row=2.9cm 
+            \erow
+        \end{calstable} 
+        
+        \begin{calstable}
+            \colwidths{{1.15cm}{16.21cm}}
+            \brow 
+                \cell{\small \bf \vspace{1pt} NOTA:} \def\cals@borderL{0pt} 
+                \cell{ \begin{spacing}{1.1} \small Este documento es propiedad de CNEA y se reserva todos los derechos legales sobre \'el. No est\'a permitida la explotaci\'on, transferencia o liberaci\'on de ninguna informaci\'on en el contenido, ni hacer reproducciones y entregarlas a terceros sin un acuerdo previo y escrito de CNEA.\end{spacing}} 
+                \ht\cals@current@row=1.6cm 
+            \erow
+        \end{calstable}     
+
+    \restoregeometry
+
   } 
 
 
@@ -230,7 +227,7 @@
             \brow 
                 \alignC \cell{\vfil \huge \bf CNEA} 
                 \cell{\vfil \bf \@titulo}              
-                \cell{\vfil IN-ATN40MC-\@numeroIT \\[4pt] P\'agina: \thepage \hspace{1pt} de \pageref{LastPage} }
+                \cell{\vfil IN-ATN40MC-\@numeroIT \\[2pt] P\'agina: \thepage \hspace{1pt} de \pageref{LastPage} }
                 \ht\cals@current@row=1.7cm 
             \erow
         \end{calstable}
