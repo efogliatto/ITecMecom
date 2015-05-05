@@ -111,10 +111,16 @@
 %                                Caratula                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand*{\pnormal}[1]{\fontsize{11pt}{13pt}\selectfont #1}
+\newcommand*{\psmall}[1]{\fontsize{10pt}{11pt}\selectfont #1}
+\newcommand*{\plarge}[1]{\fontsize{12pt}{14pt}\selectfont #1}
+
+
 \newcommand{\portada}{
 
     % Fija el ajuste de la primera pagina. Se pueden cambiar los margenes globales del documento sin afectar la forma de esta pagina
     \newgeometry{inner=2cm,width=17cm,height=24cm,head=2cm,headsep=10pt,top=3.36cm}
+    
 
         \newpage     
         \vspace*{-0.8in}    
@@ -128,13 +134,13 @@
             \colwidths{{3.15cm}{10.51cm}{3.7cm}}
             \brow 
                 \alignC \nullcell{ltr} \alignC 
-                \cell{{\vfil \large \bf GERENCIA DE INVESTICACI\'ON APLICADA} \\[4pt] DEPARTAMENTO DE MEC\'ANICA COMPUTACIONAL}
-                \cell{\vfil IN-ATN40MC-\@numeroIT}  
+                \cell{{\vfil \plarge{ {\bf GERENCIA DE INVESTICACI\'ON APLICADA}} \\[4pt] DEPARTAMENTO DE MEC\'ANICA COMPUTACIONAL}}
+                \cell{\vfil \pnormal{IN-ATN40MC-\@numeroIT}}  
                 \ht\cals@current@row=3.15cm 
             \erow
             \brow 
                 \nullcell{lrb}\spancontent{\vfil \includegraphics[width=0.9\linewidth]{Logo_CNEA}} 
-                \cell{\vfil \large \bf Informe T\'ecnico}\cell{\vfil P\'agina: \thepage \hspace{1pt} de \pageref{LastPage}} 
+                \cell{\vfil \plarge{ \bf Informe T\'ecnico}}\cell{\vfil \pnormal{P\'agina: \thepage \hspace{1pt} de \pageref{LastPage}}} 
                 \ht\cals@current@row=0.85cm
             \erow
         \end{calstable}     
@@ -142,7 +148,7 @@
         \begin{calstable}
             \colwidths{{2.25cm}{15.11cm}}
             \brow 
-                \alignC \cell{\vfil \large \bf T\'ITULO:} \def\cals@borderL{0pt} \cell{\vfil \bf \@titulo}  
+                \alignC \cell{\vfil \plarge{ \bf T\'ITULO:}} \def\cals@borderL{0pt} \cell{\vfil \bf \pnormal{\@titulo}}  
                 \ht\cals@current@row=1.35cm 
             \erow
         \end{calstable}  
@@ -152,11 +158,11 @@
             \brow 
                 \cell{
                     \vspace{10pt}            
-                    {\large \bf Objetivo:} \par
-                    {\parindent=0.75cm \@objetivo} \\ 
+                    {\plarge{\bf Objetivo:}} \par
+                    {\parindent=0.75cm \pnormal{\@objetivo}} \\ 
                      
-                    {\large \bf Alcance:} \par
-                    {\parindent=0.75cm \@alcance}
+                    {\plarge{\bf Alcance:}} \par
+                    {\parindent=0.75cm \pnormal{\@alcance}}
                  } 
                 \ht\cals@current@row=14.6cm 
             \erow
@@ -165,10 +171,10 @@
         \begin{calstable}
             \colwidths{{2.48cm}}
             \brow 
-                \alignC \nullcell{ltb} \nullcell{rtb}\spancontent{\vfil \bf Prepar\'o } 
-                \nullcell{ltb} \nullcell{tb} \nullcell{rtb} \spancontent{\vfil \bf Revis\'o } 
-                \cell{\vfil \bf \begin{spacing}{1}Intervino calidad\end{spacing}} 
-                \cell{\vfil \bf Aprob\'o} 
+                \alignC \nullcell{ltb} \nullcell{rtb}\spancontent{\vfil \bf \pnormal{Prepar\'o} } 
+                \nullcell{ltb} \nullcell{tb} \nullcell{rtb} \spancontent{\vfil \bf \pnormal{Revis\'o} } 
+                \cell{\vfil \bf \begin{spacing}{1}\pnormal{Intervino calidad}\end{spacing}} 
+                \cell{\vfil \bf \pnormal{Aprob\'o}} 
                 \ht\cals@current@row=1.15cm 
             \erow
         \end{calstable} 
@@ -176,10 +182,10 @@
         \begin{calstable}
             \colwidths{{2.48cm}}
             \brow 
-                \alignC \cell{\vfill \@fautor}\cell{\vfill \@sautor}             % Autores
-                \cell{\vfill \@frev} \cell{\vfill \@srev} \cell{\vfill \@trev}   % Revisores
-                \cell{\vfill \@calidad}                                          % Calidad
-                \cell{\vfill \@aprobacion}                                       % Aprobacion
+                \alignC \cell{\vfill \pnormal{\@fautor}}\cell{\vfill \pnormal{\@sautor}}             % Autores
+                \cell{\vfill \pnormal{\@frev}} \cell{\vfill \pnormal{\@srev}} \cell{\vfill \pnormal{\@trev}}   % Revisores
+                \cell{\vfill \pnormal{\@calidad}}                                          % Calidad
+                \cell{\vfill \pnormal{\@aprobacion}}                                       % Aprobacion
                 \ht\cals@current@row=2.9cm 
             \erow
         \end{calstable} 
@@ -187,8 +193,8 @@
         \begin{calstable}
             \colwidths{{1.15cm}{16.21cm}}
             \brow 
-                \cell{\small \bf \vspace{1pt} NOTA:} \def\cals@borderL{0pt} 
-                \cell{ \begin{spacing}{1.1} \small Este documento es propiedad de CNEA y se reserva todos los derechos legales sobre \'el. No est\'a permitida la explotaci\'on, transferencia o liberaci\'on de ninguna informaci\'on en el contenido, ni hacer reproducciones y entregarlas a terceros sin un acuerdo previo y escrito de CNEA.\end{spacing}} 
+                \cell{\psmall{ \bf \vspace{1pt} NOTA:}} \def\cals@borderL{0pt} 
+                \cell{ \begin{spacing}{1.2} \psmall{ Este documento es propiedad de CNEA y se reserva todos los derechos legales sobre \'el. No est\'a permitida la explotaci\'on, transferencia o liberaci\'on de ninguna informaci\'on en el contenido, ni hacer reproducciones y entregarlas a terceros sin un acuerdo previo y escrito de CNEA.}\end{spacing}} 
                 \ht\cals@current@row=1.6cm 
             \erow
         \end{calstable}     
