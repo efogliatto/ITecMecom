@@ -143,7 +143,7 @@
             \colwidths{{3.15cm}{10.51cm}{3.7cm}}
             \brow 
                 \alignC \nullcell{ltr} \alignC 
-                \cell{{\vfil \plarge{ {\bf GERENCIA DE INVESTICACI\'ON APLICADA}} \\[4pt] DEPARTAMENTO DE MEC\'ANICA COMPUTACIONAL}}
+                \cell{{\vfil \plarge{ {\bf GERENCIA DE INVESTIGACI\'ON APLICADA}} \\[4pt] DEPARTAMENTO DE MEC\'ANICA COMPUTACIONAL}}
                 \cell{\vfil \pnormal{IN-ATN40MC-\@numeroIT}}  
                 \ht\cals@current@row=3.15cm 
             \erow
