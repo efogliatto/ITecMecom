@@ -331,7 +331,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                      Figuras, tablas y referencias                          %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\tablename}{Tabla}
+% Colocar al principio del documento, para evitar la sobreescritura realizada por el paquete babel
+\AtBeginDocument{%
+    \renewcommand{\tablename}{Tabla}
+}
 \renewcommand{\figurename}{Figura}
 \renewcommand{\refname}{\vspace{-1.5cm}}
 
