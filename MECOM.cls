@@ -113,7 +113,10 @@
   {\leftmargin\labelwidth\itemindent 0.75cm }
   {}{}
 
-
+\RequirePackage{ifthen}
+\renewcommand{\nomgroup}[1]{%
+    \ifthenelse{\equal{#1}{A}}{\item[\textbf{Acr\'onimos}]}{%
+        \ifthenelse{\equal{#1}{N}}{\item[\textbf{Nomenclaturas}]}{}}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
