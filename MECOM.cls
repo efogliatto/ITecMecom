@@ -57,7 +57,7 @@
 \RequirePackage{booktabs}             % Formato de tablas
 \RequirePackage[a4paper]{geometry}             % Formato de margenes (distinto para la primera pagina)
 \RequirePackage{lipsum}               % Opcional. Solo para insertar texto "dummy"
-
+\RequirePackage[english,spanish]{babel}
 
 
 % Margenes
@@ -268,11 +268,11 @@
 %                Titulos de secciones y subsecciones                          %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Agrega al punto despues del numero de (sub/subsub)seccion
-\renewcommand{\thesection}   {\textup{\arabic{section}.}}
-\renewcommand{\thesubsection}   {\textup{\thesection\arabic{subsection}.}}
-\renewcommand{\thesubsubsection}{\textup{%
-    \thesubsection \arabic{subsubsection}.}}
+%% Agrega al punto despues del numero de (sub/subsub)seccion
+%\renewcommand{\thesection}      {\textup{\arabic{section}.}}
+%\renewcommand{\thesubsection}   {\textup{\thesection\arabic{subsection}.}}
+%\renewcommand{\thesubsubsection}{\textup{\thesubsection \arabic{subsubsection}.}}
+
 
 % Formato del titulo de la (sub/subsub)seccion
 \renewcommand{\section}{\@startsection{section}{1}{0mm}%
