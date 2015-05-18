@@ -55,8 +55,9 @@
 \RequirePackage{xpatch}               % Espacio en tabla de abreviaturas
 \RequirePackage{multirow}             % Unir filas en tablas
 \RequirePackage{booktabs}             % Formato de tablas
-\RequirePackage[a4paper]{geometry}             % Formato de margenes (distinto para la primera pagina)
+\RequirePackage[a4paper]{geometry}    % Formato de margenes (distinto para la primera pagina)
 \RequirePackage{lipsum}               % Opcional. Solo para insertar texto "dummy"
+\RequirePackage{calc}                  % Aritmetica. Sobre todo para ajuste automatico de headers
 
 
 
@@ -123,6 +124,7 @@
 \newcommand*{\pnormal}[1]{\fontsize{11pt}{13pt}\selectfont #1}
 \newcommand*{\psmall}[1]{\fontsize{10pt}{11pt}\selectfont #1}
 \newcommand*{\plarge}[1]{\fontsize{12pt}{14pt}\selectfont #1}
+\newcommand*{\phuge}[1]{\fontsize{20pt}{24pt}\selectfont #1}
 
 
 \newcommand{\portada}{
@@ -228,6 +230,10 @@
 }
 
 % Resto de las p\'aginas
+\newlength{\tlength}
+\setlength{\tlength}{10.16cm}
+%\tlength
+
 \fancypagestyle{followingpage}{
     \fancyhf{}                            % Borra todos los campos
     \renewcommand{\headrulewidth}{0pt}    % Elimina la l\'inea del encabezado
@@ -240,9 +246,9 @@
             \def\cals@cs@width{1.5pt}    
             \colwidths{{2.8cm}{10.14cm}{4.06cm}}
             \brow 
-                \alignC \cell{\vfil \huge \bf CNEA} 
-                \cell{\vfil \bf \@titulo}              
-                \cell{\vfil IN-ATN40MC-\@numeroIT \\[2pt] P\'agina: \thepage \hspace{1pt} de \pageref{LastPage} }
+                \alignC \cell{\vfil \bf \phuge{CNEA}} 
+                \cell{\vfil \bf \pnormal{\@titulo}}              
+                \cell{\vfil \pnormal{IN-ATN40MC-\@numeroIT \\[2pt] P\'agina: \thepage \hspace{1pt} de \pageref{LastPage}}}
                 \ht\cals@current@row=1.7cm 
             \erow
         \end{calstable}
