@@ -48,12 +48,12 @@
     \tableofcontents    
     
     % Comienzo del desarrollo del documento
-    \section{Definiciones}
-    \subsection{Abreviaturas}
+    \section{Definiciones, acr\'onimos y nomenclaturas}
+%    \subsection{Abreviaturas}
         \printnomenclature[2cm]
         
     \section{Uso de MECOM.cls}
-    La clase {\bf MECOM.cls} est\'a basada en {\bf article} \cite{hefferon_minutes_2005}, y est\'a pensada para escribir informes t\'ecnicos de Mecom.\nomenclature{Mecom}{Mec\'anica Computacional}. Se recomienda consultar el archivo ITec\textunderscore Mecom.tex para ver la implementaci\'on de secciones como portada, \'indice, abreviaturas, referencias, etc.
+    La clase {\bf MECOM.cls} est\'a basada en {\bf article} \cite{hefferon_minutes_2005}, y est\'a pensada para escribir informes t\'ecnicos de Mecom.\nomenclature[A]{Mecom}{Mec\'anica Computacional}. Se recomienda consultar el archivo ITec\textunderscore Mecom.tex para ver la implementaci\'on de secciones como portada, \'indice, abreviaturas, referencias, etc.
     
     \subsection{Portada}
         El comando {\bf \textbackslash portada} genera la portada en una p\'agina nueva. Para completarla es necesario llenar los siguientes campos.
@@ -68,7 +68,7 @@
             \item numeroIT (s\'olo la parte final, es decir n\'umero/a\~no)
         \end{itemize}
         \par
-        Es necesario conservar el logo de CNEA\nomenclature{CNEA}{Comisi\'on Nacional de Energ\'ia At\'omica} para poder compilar el documento. Junto con este documento se adjunta un archivo \emph{Makefile} para facilitar la compilaci\'on completa (\'indices, abreviaturas, y referencias).
+        Es necesario conservar el logo de CNEA\nomenclature[A]{CNEA}{Comisi\'on Nacional de Energ\'ia At\'omica} para poder compilar el documento. Junto con este documento se adjunta un archivo \emph{Makefile} para facilitar la compilaci\'on completa (\'indices, abreviaturas, y referencias).
         \par
         Los tama\~nos de letra de la portada se encuentran fijos en Arial 11pt. Al modificar el tama\~no global, la portada no se modifica.
         
@@ -77,7 +77,7 @@
         
         
     \subsection{Abreviaturas}
-        Uso del paquete {\bf nomencl}. Los s\'imbolos est\'an alineados y tienen sangr\'ia.
+        Uso del paquete {\bf nomencl}. Los s\'imbolos est\'an alineados y tienen sangr\'ia, y se defini\'o el nombre de los grupos Acr\'onimos y Nomenclaturas para diferenciar, por ejemplo, CNEA de $\epsilon$.\nomenclature[N]{$\epsilon$}{Letra griega para nomenclatura}
         
     \subsection{Im\'agenes y tablas}
     Se hace uso del paquete {\bf caption} para dar formato a los ep\'igrafes, y las referencias generan links por defecto en el pdf. Por ejemplo, ver como queda la Fig.~\ref{fg:Logo_CNEA}
@@ -89,7 +89,7 @@
     \end{figure}    
     
     \par
-    Para usar las tablas se definieron os anchos de l\'inea con el paquete {booktabs}, y pueden quedar como la Tabla.~\ref{tab:prueba}
+    Para usar las tablas se definieron los anchos de l\'inea con el paquete {booktabs}, y pueden quedar como la Tabla.~\ref{tab:prueba}
     \begin{table}[ht]
         \centering
         \begin{tabular}{c c}
@@ -122,7 +122,7 @@
     
     
     \newpage
-    \section{Prueba de m\'argenes} \lipsum[1-12]    
+    \section{Prueba de m\'argenes} \blindtext[11]    
     
 
 \end{document}
