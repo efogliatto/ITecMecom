@@ -1,11 +1,17 @@
 filename=ITec_Mecom
 
-pdf:
+all:
 	pdflatex ${filename}.tex
 	bibtex ${filename}||true
 	pdflatex ${filename}.tex
 	pdflatex ${filename}.tex
 	makeindex ${filename}.nlo  -s nomencl.ist -o ${filename}.nls
+
+pdflatex:
+	pdflatex ${filename}.tex
+	
+bibtex:
+	bibtex ${filename}||true
 
 read:
 	evince ${filename}.pdf &
