@@ -336,9 +336,10 @@
 % Colocar al principio del documento, para evitar la sobreescritura realizada por el paquete babel
 \AtBeginDocument{%
     \renewcommand{\tablename}{Tabla}
+    \renewcommand{\refname}{\vspace{-1.5cm}}
 }
 \renewcommand{\figurename}{Figura}
-\renewcommand{\refname}{\vspace{-1.5cm}}
+%\renewcommand{\refname}{\vspace{-1.5cm}}
 
 % pdf links
 %\ifnum \mecomuselinks = 1
