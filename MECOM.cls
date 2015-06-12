@@ -1,6 +1,6 @@
 % MECOM.cls
 %
-% Marzo 2015  Ezequiel Fogliatto fogliatto (at) cab.cnea.gov.ar
+% Marzo 2015  Ezequiel O. Fogliatto fogliatto (at) cab.cnea.gov.ar
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
@@ -58,6 +58,7 @@
 \RequirePackage[a4paper]{geometry}             % Formato de margenes (distinto para la primera pagina)
 \RequirePackage[english,spanish]{babel}
 \RequirePackage{blindtext}               % Opcional. Solo para insertar texto "dummy"
+\RequirePackage[nottoc,numbib]{tocbibind}    % Manejo de bibliograf\'ia en TOC
 
 
 % Margenes
@@ -96,6 +97,8 @@
 
 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         Abreviaturas                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -113,10 +116,14 @@
   {\leftmargin\labelwidth\itemindent 0.75cm }
   {}{}
 
+% Creacion de grupos: Acronimos (A) y nomenclaturas (N)
 \RequirePackage{ifthen}
 \renewcommand{\nomgroup}[1]{%
     \ifthenelse{\equal{#1}{A}}{\item[\textbf{Acr\'onimos}]}{%
         \ifthenelse{\equal{#1}{N}}{\item[\textbf{Nomenclaturas}]}{}}}
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -294,6 +301,8 @@
 
 
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                           Tabla de contenidos                               %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -336,10 +345,10 @@
 % Colocar al principio del documento, para evitar la sobreescritura realizada por el paquete babel
 \AtBeginDocument{%
     \renewcommand{\tablename}{Tabla}
-    \renewcommand{\refname}{\vspace{-1.5cm}}
+%    \renewcommand{\refname}{\vspace{-1.5cm}}
+    \renewcommand{\tocbibname}{Bibliograf\'ia y referencias}
 }
 \renewcommand{\figurename}{Figura}
-%\renewcommand{\refname}{\vspace{-1.5cm}}
 
 % pdf links
 %\ifnum \mecomuselinks = 1
@@ -352,6 +361,7 @@
 \RequirePackage{nameref,url}
 \def\UrlFont{\mdseries}
 %\fi
+
 
 % Separaci\'on entre filas y columnas
 \renewcommand{\arraystretch}{1.3}
