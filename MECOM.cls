@@ -308,7 +308,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Cambio del nombre
-\renewcommand{\contentsname}{\'INDICE}
+\AtBeginDocument{\renewcommand{\contentsname}{\'INDICE}}
 
 % Centrado del nombre, comienza nueva p\'agina al final
 \makeatletter       
