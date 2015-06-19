@@ -36,6 +36,12 @@
     pdfcreator={CNEA},
     pdfsubject={Departamento de Mec\'anica Computacional, IN-ATN40MC-XX/20XX}    
     }
+    
+% Autores de revisiones
+\definechangesauthor[name={Johann Sebastian Mastropiero}, color=blue]{mas}
+
+
+
 
 
 
@@ -45,7 +51,7 @@
     \portada
     
     % Creacion del indice
-    \tableofcontents    
+    \tableofcontents   
     
     % Comienzo del desarrollo del documento
     \section{Definiciones, acr\'onimos y nomenclaturas}
@@ -111,6 +117,11 @@
     \par
     La clase MECOM hace uso del paquete {\bf tocbibind}, el cual aporta flexibilidad en la generaci\'on del t\'itulo e inclusi\'on en el \'indice. Por defecto, el t\'itulo de la secci\'on {\bf Bibliograf\'ia y referencias} se encuentra numerado, aunque este efecto puede cambiarse eliminando la opci\'on {\bf numbib}.
     
+    \subsection{Control de cambios}
+    En esta primera versi\'on, se sugiere el uso del paquete {\bf changes} para realizar revisiones (hasta que se defina una alternativa mejor). Este paquete permite, entre otras cosas, incorporar anotaciones como en \replaced[id=mas]{LibreOffice}{Microsoft Word}. Se pueden incluir autores, colores, lista de cambios, etc.
+    \par
+    La utilizaci\'on de este paquete en realidad no implica llevar a cabo un control de las versiones, sino remarcar las correcciones y/o extensiones que puedan incorporar los revisores. Si se usa el paquete con la opci\'on \emph{final}, la compilaci\'on produce un pdf sin estas marcas.
+    
     \subsection{Formato general}
     El resto de las caracter\'isticas generales del documento, como sangr\'ia, interlineado, formato de t\'itulo de secciones, encabezados, etc., se encuentran definidas dentro de la clase, utilizando valores similares a los empleados en el template con formato .docx. La clase MECOM est\'a comentada, de forma que puede cambiarse f\'acilmente.
     
@@ -125,6 +136,6 @@
     
     \newpage
     \section{Prueba de m\'argenes} \blindtext[11]    
-    
+
 
 \end{document}

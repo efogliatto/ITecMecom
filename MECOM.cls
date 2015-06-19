@@ -59,7 +59,7 @@
 \RequirePackage[english,spanish]{babel}
 \RequirePackage{blindtext}               % Opcional. Solo para insertar texto "dummy"
 \RequirePackage[nottoc,numbib]{tocbibind}    % Manejo de bibliograf\'ia en TOC
-\RequirePackage{changes}              % Edici\'on - correcci\'on del documento
+\RequirePackage[authormarkup=footnote,authormarkuptext=name]{changes}              % Edici\'on - correcci\'on del documento
 
 
 % Margenes
