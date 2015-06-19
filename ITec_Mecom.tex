@@ -53,7 +53,8 @@
         \printnomenclature[2cm]
         
     \section{Uso de MECOM.cls}
-    La clase {\bf MECOM.cls} est\'a basada en {\bf article} \cite{hefferon_minutes_2005}, y est\'a pensada para escribir informes t\'ecnicos de Mecom.\nomenclature[A]{Mecom}{Mec\'anica Computacional}. Se recomienda consultar el archivo ITec\textunderscore Mecom.tex para ver la implementaci\'on de secciones como portada, \'indice, abreviaturas, referencias, etc.
+    La clase {\bf MECOM.cls} est\'a basada en {\bf article} \cite{hefferon_minutes_2005}, y est\'a pensada para escribir informes t\'ecnicos de Mecom. Se recomienda consultar el archivo ITec\textunderscore Mecom.tex para ver la implementaci\'on de secciones como portada, \'indice, abreviaturas, referencias, etc.
+    \nomenclature[A]{Mecom}{Mec\'anica Computacional}
     
     \subsection{Portada}
         El comando {\bf \textbackslash portada} genera la portada en una p\'agina nueva. Para completarla es necesario llenar los siguientes campos.
@@ -89,7 +90,7 @@
     \end{figure}    
     
     \par
-    Para usar las tablas se definieron los anchos de l\'inea con el paquete {booktabs}, y pueden quedar como la Tabla.~\ref{tab:prueba}
+    Para usar las tablas se definieron los anchos de l\'inea con el paquete {\bf booktabs}, y pueden quedar como la Tabla~\ref{tab:prueba}.
     \begin{table}[ht]
         \centering
         \begin{tabular}{c c}
@@ -106,14 +107,16 @@
     
     
     \subsection{Referencias}
-    Para generar este documento se us\'o el estilo {\bf asmems4} con Bibtex.
+    Para generar este documento se us\'o el estilo {\bf asmems4} con Bibtex, y se incluye el archivo asmems4.bst para facilitar la primera compilaci\'on. El usuario de la clase puede emplear el formato que considere m\'as adecuado.
+    \par
+    La clase MECOM hace uso del paquete {\bf tocbibind}, el cual aporta flexibilidad en la generaci\'on del t\'itulo e inclusi\'on en el \'indice. Por defecto, el t\'itulo de la secci\'on {\bf Bibliograf\'ia y referencias} se encuentra numerado, aunque este efecto puede cambiarse eliminando la opci\'on {\bf numbib}.
     
     \subsection{Formato general}
-    El resto de las caracter\'isticas generales del documento, como sangr\'ia, interlineado, formato de t\'itulo de secciones, encabezados, etc., se encuentran definidas dentro de la clase. La misma est\'a comentada, de forma que puede cambiarse f\'acilmente si se desea.
+    El resto de las caracter\'isticas generales del documento, como sangr\'ia, interlineado, formato de t\'itulo de secciones, encabezados, etc., se encuentran definidas dentro de la clase, utilizando valores similares a los empleados en el template con formato .docx. La clase MECOM est\'a comentada, de forma que puede cambiarse f\'acilmente.
     
     
     \section{Conclusiones}
-    Ya no hay excusas para documentar el trabajo usando informes t\'ecnicos.
+    Ya no hay excusas para documentar el trabajo usando informes t\'ecnicos.\\    
     
     
     \bibliographystyle{asmems4}
