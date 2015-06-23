@@ -107,7 +107,6 @@
 \makenomenclature
 
 % Quita el nombre de la seccion abreviaturas
-%\renewcommand{\nomname}{\vspace{-1.5cm}}
 \renewcommand{\nomname}{Definiciones, acr\'onimos y s\'imbolos}
 
 % Coloca las abreviaturas en negrita
