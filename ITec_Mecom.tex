@@ -54,13 +54,16 @@
     \tableofcontents   
     
     % Comienzo del desarrollo del documento
-    \section{Definiciones, acr\'onimos y nomenclaturas}
-%    \subsection{Abreviaturas}
-        \printnomenclature[2cm]
+    \printnomenclature[2cm]
+
+
         
     \section{Uso de MECOM.cls}
     La clase {\bf MECOM.cls} est\'a basada en {\bf article} \cite{hefferon_minutes_2005}, y est\'a pensada para escribir informes t\'ecnicos de Mecom. Se recomienda consultar el archivo ITec\textunderscore Mecom.tex para ver la implementaci\'on de secciones como portada, \'indice, abreviaturas, referencias, etc.
     \nomenclature[A]{Mecom}{Mec\'anica Computacional}
+
+
+
     
     \subsection{Portada}
         El comando {\bf \textbackslash portada} genera la portada en una p\'agina nueva. Para completarla es necesario llenar los siguientes campos.
@@ -78,25 +81,53 @@
         Es necesario conservar el logo de CNEA\nomenclature[A]{CNEA}{Comisi\'on Nacional de Energ\'ia At\'omica} para poder compilar el documento. Junto con este documento se adjunta un archivo \emph{Makefile} para facilitar la compilaci\'on completa (\'indices, abreviaturas, y referencias).
         \par
         Los tama\~nos de letra de la portada se encuentran fijos en Arial 11pt. Al modificar el tama\~no global, la portada no se modifica.
+
+
         
     \subsection{\'Indice}
         Se redefini\'o la estructura de {\bf \textbackslash tableofcontents} para colocar el \'indice en una p\'agina nueva, con la palabra {\bf \'INDICE} centrada y los t\'itulos de secciones y subsecciones en tama\~no \textbackslash large.
         
+
+
         
     \subsection{Abreviaturas}
-        Uso del paquete {\bf nomencl}. Los s\'imbolos est\'an alineados y tienen sangr\'ia, y se defini\'o el nombre de los grupos Acr\'onimos y Nomenclaturas para diferenciar, por ejemplo, CNEA de $\epsilon$.\nomenclature[N]{$\epsilon$}{Letra griega para nomenclatura}
+        Uso del paquete {\bf nomencl}. Los s\'imbolos est\'an alineados y tienen sangr\'ia, y se defini\'o el nombre de los grupos Acr\'onimos y S\'imbolos para diferenciar, por ejemplo, CNEA de $\epsilon$.\nomenclature[N]{$\epsilon$}{Letra griega para nomenclatura}
+
+
         
     \subsection{Im\'agenes y tablas}
-    Se hace uso del paquete {\bf caption} para dar formato a los ep\'igrafes, y las referencias generan links por defecto en el pdf. Por ejemplo, ver como queda la Fig.~\ref{fg:Logo_CNEA}
+    Se hace uso del paquete {\bf caption} para dar formato a los ep\'igrafes, y las referencias generan links por defecto en el pdf. Por ejemplo, ver como queda la \fig{fg:Logo_CNEA}
     \begin{figure}[ht]
         \centering
         \includegraphics[width=0.5\textwidth]{Logo_CNEA}
         \caption{Ejemplo de uso de figuras}
         \label{fg:Logo_CNEA}
-    \end{figure}    
+    \end{figure}
     
     \par
-    Para usar las tablas se definieron los anchos de l\'inea con el paquete {\bf booktabs}, y pueden quedar como la Tabla~\ref{tab:prueba}.
+    Por defecto, tambi\'en se carga el paquete {\bf subcaption}, de modo que se pueden insertar subfiguras como en la \fig{fg:subfiguras}. Para facilitar la uniformidad en las referencias, pueden usarse las macros {\bf \textbackslash fig, \textbackslash figs y \textbackslash tb}, tambi\'en definidas en MECOM.
+    
+    \begin{figure}[ht]
+        \centering
+        \begin{subfigure}[t]{0.45\textwidth}
+            \centering
+            \includegraphics[width=0.9\textwidth]{Logo_CNEA}
+            \caption{Subfigura}
+            \label{fg:sub1}
+        \end{subfigure}
+        \begin{subfigure}[t]{0.45\textwidth}
+            \centering
+            \includegraphics[width=0.9\textwidth]{Logo_CNEA}
+            \caption{Subfigura}
+            \label{fg:sub2}
+        \end{subfigure} 
+        \caption{Uso de subfiguras con {\bf subcaption}}
+        \label{fg:subfiguras}       
+    \end{figure}    
+    
+    
+    \par
+    Para usar las tablas se definieron los anchos de l\'inea con el paquete {\bf booktabs}, y pueden quedar como la \tb{tab:prueba}.
     \begin{table}[ht]
         \centering
         \begin{tabular}{c c}
@@ -111,23 +142,31 @@
         \label{tab:prueba}
     \end{table}    
     
+
+
     
     \subsection{Referencias}
     Para generar este documento se us\'o el estilo {\bf asmems4} con Bibtex, y se incluye el archivo asmems4.bst para facilitar la primera compilaci\'on. El usuario de la clase puede emplear el formato que considere m\'as adecuado.
     \par
     La clase MECOM hace uso del paquete {\bf tocbibind}, el cual aporta flexibilidad en la generaci\'on del t\'itulo e inclusi\'on en el \'indice. Por defecto, el t\'itulo de la secci\'on {\bf Bibliograf\'ia y referencias} se encuentra numerado, aunque este efecto puede cambiarse eliminando la opci\'on {\bf numbib}.
     
+    
+    
     \subsection{Control de cambios}
     En esta primera versi\'on, se sugiere el uso del paquete {\bf changes} para realizar revisiones (hasta que se defina una alternativa mejor). Este paquete permite, entre otras cosas, incorporar anotaciones como en \replaced[id=mas]{LibreOffice}{Microsoft Word}. Se pueden incluir autores, colores, lista de cambios, etc.
     \par
     La utilizaci\'on de este paquete en realidad no implica llevar a cabo un control de las versiones, sino remarcar las correcciones y/o extensiones que puedan incorporar los revisores. Si se usa el paquete con la opci\'on \emph{final}, la compilaci\'on produce un pdf sin estas marcas.
     
+    
+    
     \subsection{Formato general}
     El resto de las caracter\'isticas generales del documento, como sangr\'ia, interlineado, formato de t\'itulo de secciones, encabezados, etc., se encuentran definidas dentro de la clase, utilizando valores similares a los empleados en el template con formato .docx. La clase MECOM est\'a comentada, de forma que puede cambiarse f\'acilmente.
     
     
+    
+    
     \section{Conclusiones}
-    Ya no hay excusas para documentar el trabajo usando informes t\'ecnicos.\\    
+    Ya no hay excusas para no documentar el trabajo usando informes t\'ecnicos.\\    
     
     
     \bibliographystyle{asmems4}

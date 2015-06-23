@@ -18,7 +18,7 @@
 %
 % --- Estructura de la clase: secci\'on de identificaci\'on
 % ---
-\ProvidesClass{GIA_Mecom_TechRep}[2015/03/05 Informes Tecnicos de Mecom]
+\ProvidesClass{MECOM}[2015/03/05 Informes Tecnicos de Mecom]
 \NeedsTeXFormat{LaTeX2e}
 
 
@@ -50,7 +50,7 @@
 \RequirePackage{amsmath,amsfonts}     % S\'imbolos matem\'aticos
 \RequirePackage{fixltx2e}             % Multicolumn
 \RequirePackage{placeins}             % Fuerza el salto de p\'agina despu\'es de figuras con \FloatBarrier
-\RequirePackage{nomencl}              % Tabla de abreviaturas
+\RequirePackage[intoc]{nomencl}       % Tabla de abreviaturas
 \RequirePackage[format=hang]{caption} % Formato de captions
 \RequirePackage{xpatch}               % Espacio en tabla de abreviaturas
 \RequirePackage{multirow}             % Unir filas en tablas
@@ -60,6 +60,7 @@
 \RequirePackage{blindtext}               % Opcional. Solo para insertar texto "dummy"
 \RequirePackage[nottoc,numbib]{tocbibind}    % Manejo de bibliograf\'ia en TOC
 \RequirePackage[authormarkup=footnote,authormarkuptext=name]{changes}              % Edici\'on - correcci\'on del documento
+\RequirePackage[width=0.95\textwidth]{subcaption}
 
 
 % Margenes
@@ -106,7 +107,8 @@
 \makenomenclature
 
 % Quita el nombre de la seccion abreviaturas
-\renewcommand{\nomname}{\vspace{-1.5cm}}
+%\renewcommand{\nomname}{\vspace{-1.5cm}}
+\renewcommand{\nomname}{Definiciones, acr\'onimos y s\'imbolos}
 
 % Coloca las abreviaturas en negrita
 %\renewcommand{\nomlabel}[1]{\bf #1}
@@ -121,7 +123,7 @@
 \RequirePackage{ifthen}
 \renewcommand{\nomgroup}[1]{%
     \ifthenelse{\equal{#1}{A}}{\item[\textbf{Acr\'onimos}]}{%
-        \ifthenelse{\equal{#1}{N}}{\item[\textbf{Nomenclaturas}]}{}}}
+        \ifthenelse{\equal{#1}{N}}{\item[\textbf{S\'imbolos}]}{}}}
 
 
 
@@ -350,6 +352,11 @@
     \renewcommand{\tocbibname}{Bibliograf\'ia y referencias}
 }
 \renewcommand{\figurename}{Figura}
+
+% Definiciones especiales. Estandariza la referencia a figuras
+\newcommand{\fig}[1]{Fig.~\ref{#1}}
+\newcommand{\figs}[2]{Figs.~\ref{#1} y \ref{#2}}
+\newcommand{\tb}[1]{Tabla~\ref{#1}}
 
 % pdf links
 %\ifnum \mecomuselinks = 1
