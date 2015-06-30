@@ -25,7 +25,11 @@
 % --- Estructura de la clase: declaraci\'on de opciones
 % ---
 % Esta clase extiende la clase article
-% Lee todas las opciones de documentclass, y las pasa a article
+
+% Generacion de pdf sin las marcas de cambios
+\DeclareOption{vfinal}{\PassOptionsToPackage{final}{changes}}
+
+% Lee todas las opciones no declaradas previamente de documentclass, y las pasa a article
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
 
@@ -41,7 +45,7 @@
 
 % Carga de paquetes adicionales
 \RequirePackage[T1]{fontenc}          % Usar T1 enconding
-\RequirePackage[utf8]{inputenc}           % Uso adecuado de las tildes
+\RequirePackage[utf8]{inputenc}       % Uso adecuado de las tildes
 \RequirePackage{fancyhdr}             % Encabezados y pies de p\'agina
 \RequirePackage{cals}                 % Generaci\'on de tablas con tama\~nos absolutos
 \RequirePackage{lastpage}             % Determina la cantidad total de p\'aginas
