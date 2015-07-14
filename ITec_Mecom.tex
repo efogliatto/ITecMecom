@@ -165,6 +165,72 @@
     
     
     
+    \section{Creaci\'on y uso de repositorios con \emph{git} (red interna de mecom)}
+    La herramienta de control de versiones \emph{git} puede usarse en la elaboraci\'on del documento, siendo especialmente \'util en la edici\'on por parte de m\'ultiples usuarios (por ejemplo, correcci\'on y revisi\'on). A continuaci\'on se incluyen algunas instrucciones simples para el uso de git.
+    
+    \subsection*{Repositorios remotos}
+    En primer lugar es necesario contar con el repositorio local, el cual podr\'ia crearse siguiendo los siguientes pasos    
+    \begin{verbatim}
+        cd mi_proyecto/
+        git init
+        git add *
+        git commit -m "Commit inicial"
+    \end{verbatim}
+    En este caso, \emph{mi\textunderscore proyecto/} es el directorio donde se elabora el informe, \emph{git init} inicializa el proyecto para \emph{git} creando el directorio \emph{.git/}, \emph{git add *} agrega todos los archivos al 'sttaged area', y \emph{git commit} genera el commit inicial. Para m\'as informaci\'on, ¡leer la documentaci\'on de \emph{git}!.
+    \par
+    Si lo que se desea es compartir este proyecto, entonces puede generarse un repositorio remoto, donde las personas que trabajen sobre el mismo puedan hacer sus \emph{pull, push y fetch}. Para ello, es necesario crear e inicializar un directorio para el repositorio remoto (en este ejemplo, el creador del repositorio remoto es el mismo que el creador del local):
+    \begin{verbatim}
+        cd
+        mkdir -p ubicacion_de_preferencia/mi_proyecto.git
+        cd ubicacion_de_preferencia/mi_proyecto.git
+        git --bare init
+    \end{verbatim} 
+    Dentro de este repositorio remoto pueden agregarse las opciones    
+    \begin{verbatim}
+        git config core.sharedrepository 1
+        git config receive.denyNonFastforwards true
+    \end{verbatim}
+    donde la primera obliga a git a mantener los permisos de lectura y escritura, mientras que la segunda obliga al usuario a hacer \emph{merge} en la m\'aquina local, y luego subir los cambios. Una vez listo el repositorio remoto, volver al repositorio local y agregar un \emph{remote}
+    \begin{verbatim}
+        git remote add origin ~/ubicacion_de_preferencia/mi_proyecto.git
+    \end{verbatim}
+    de modo que, ejecutando la siguiente instrucci\'on dentro del repositorio local
+    \begin{verbatim}
+        git push origin master
+    \end{verbatim}
+    se origina el primer \emph{push} al repositorio remoto y \'este queda listo para ser usado.
+    \par
+    Una vez que se cuenta con el repositorio remoto, {\bf con permiso de lectura y escritura}, un usuario B puede clonar el proyecto creado por el usuario A. Si se ejecuta, por ejemplo
+    \begin{verbatim}
+        cd Documents
+        git clone /users/usuarioA/ubicacion_de_preferencia/mi_proyecto.git
+    \end{verbatim}
+    entonces el usuario B est\'a clonando el proyecto remoto \emph{mi\textunderscore proyecto.git} creado por el usuario A, dentro del directorio Documents. Cuando el usuario B cuente con el proyecto, puede editarlo, hacer sus commits, y luego subirlo al repositorio remoto:
+    \begin{verbatim}
+        git push origin master
+    \end{verbatim}
+    De modo que el usuario A puede (luego de verificar que existen cambios en el repositorio remoto) actualizar su repositorio local, por ejemplo con
+    \begin{verbatim}
+        git pull origin master
+    \end{verbatim}    
+
+    \par
+    Con este procedimiento, dos (o m\'as) usuarios pueden editar el documento manteniendo un control de cambios. 
+    \par
+    En el ejemplo mostrado, los dos usuarios trabajan desde sus cuentas de mecom. Sin embargo, uno puede agregar \emph{remotes} usando protocolos como \emph{ssh, http, https o git}. Por ejemplo, si se desea clonar un proyecto en una m\'aquina que cuenta con acceso remoto al cab, podr\'ia hacerse
+    \begin{verbatim}
+        git clone ssh://usuarioB_casa@localhost:/users/usuarioA/../mi_proyecto.git
+    \end{verbatim}
+    o bien, para crear un repositorio en forma remota
+    \begin{verbatim}
+        git remote add origin ssh://usuarioA_casa@localhost:/../mi_proyecto.git
+    \end{verbatim}      
+    
+    
+    
+    
+    
+    
     \section{Conclusiones}
     Ya no hay excusas para no documentar el trabajo usando informes t\'ecnicos.\\    
     
